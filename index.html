@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremiumBuild - Premium Ko'chmas Mulk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d',
+                        secondary: '#2d3748',
+                        accent: '#e53e3e',
+                        gold: '#d69e2e',
+                        success: '#38a169',
+                        navy: '#2c5282',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-left': 'slideLeft 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(-30px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(229, 62, 62, 0.6));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .price-badge {
+            background: linear-gradient(135deg, #d69e2e, #e53e3e);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1a365d, #e53e3e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #1a365d, #e53e3e, #d69e2e);
+            width: 80px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            border: 1px solid rgba(26, 54, 93, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .news-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .filter-btn.active {
+            background: #1a365d;
+            color: white;
+            border-color: #1a365d;
+        }
+        
+        .apartment-card {
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .apartment-card:hover {
+            border-color: #1a365d;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+        }
+        
+        .counter-item {
+            text-align: center;
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a365d;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+                        <i class="fas fa-building text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text">PremiumBuild</h1>
+                        <p class="text-xs text-gray-500">Since 2003</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary font-medium transition duration-300">Bosh sahifa</a>
+                    <a href="#apartments" class="text-gray-700 hover:text-primary font-medium transition duration-300">Kvartiralar</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary font-medium transition duration-300">Loyihalar</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary font-medium transition duration-300">Kompaniya</a>
+                    <a href="#news" class="text-gray-700 hover:text-primary font-medium transition duration-300">Yangiliklar</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary font-medium transition duration-300">Kontaktlar</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+998781228822" class="bg-accent text-white px-6 py-2 rounded-full font-semibold hover:bg-red-600 transition duration-300">
+                        <i class="fas fa-phone mr-2"></i>+998 78 122 88 22
+                    </a>
+                    <button class="lg:hidden text-gray-700" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-primary font-medium">Bosh sahifa</a>
+                <a href="#apartments" class="block text-gray-700 hover:text-primary font-medium">Kvartiralar</a>
+                <a href="#projects" class="block text-gray-700 hover:text-primary font-medium">Loyihalar</a>
+                <a href="#about" class="block text-gray-700 hover:text-primary font-medium">Kompaniya</a>
+                <a href="#news" class="block text-gray-700 hover:text-primary font-medium">Yangiliklar</a>
+                <a href="#contact" class="block text-gray-700 hover:text-primary font-medium">Kontaktlar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section id="home" class="hero-slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(26, 54, 93, 0.7), rgba(229, 62, 62, 0.5)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h2 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+                        Premium <span class="text-gold">Hayot</span>
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 animate-slide-up">O'zbekistondagi eng yaxshi turar joy majmualari</p>
+                    <button class="bg-accent hover:bg-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition duration-300 animate-scale-in">
+                        <i class="fas fa-search mr-2"></i>Kvartira tanlash
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: linear-gradient(rgba(229, 62, 62, 0.7), rgba(214, 158, 46, 0.5)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h2 class="text-5xl md:text-7xl font-bold mb-6">
+                        <span class="text-gold">Yangi</span> Loyiha
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8">Poytaxt markazidagi zamonaviy majmua</p>
+                    <button class="bg-gold hover:bg-yellow-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition duration-300">
+                        <i class="fas fa-play mr-2"></i>Batafsil
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: linear-gradient(rgba(56, 161, 105, 0.7), rgba(26, 54, 93, 0.5)), url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h2 class="text-5xl md:text-7xl font-bold mb-6">
+                        <span class="text-green-400">6%</span> Ipoteka
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8">Qulay to'lov sharoitlari bilan</p>
+                    <button class="bg-success hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition duration-300">
+                        <i class="fas fa-calculator mr-2"></i>Hisoblash
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Navigation -->
+        <button class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-3 rounded-full transition duration-300" id="prev-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-3 rounded-full transition duration-300" id="next-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Slider Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <button class="w-3 h-3 rounded-full bg-white dot active" data-slide="0"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 dot" data-slide="1"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 dot" data-slide="2"></button>
+        </div>
+    </section>
+
+    <!-- Apartment Search Section -->
+    <section id="apartments" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4">O'zingizga Mos Kvartira Toping</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Eng yaxshi kvartiralarni qulay filtrlar bilan toping</p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="bg-gray-50 p-6 rounded-2xl mb-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Xonalar soni</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Barcha</option>
+                            <option>1 xona</option>
+                            <option>2 xona</option>
+                            <option>3 xona</option>
+                            <option>4+ xona</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Qavat</label>
+                        <div class="flex space-x-2">
+                            <input type="number" placeholder="Dan" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary">
+                            <input type="number" placeholder="Gacha" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Maydon (m²)</label>
+                        <div class="flex space-x-2">
+                            <input type="number" placeholder="30" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary">
+                            <input type="number" placeholder="200" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Loyiha</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Barcha loyihalar</option>
+                            <option>Premium Tower</option>
+                            <option>Golden Residence</option>
+                            <option>Royal Gardens</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-primary text-white p-3 rounded-lg hover:bg-blue-900 transition duration-300">
+                            <i class="fas fa-search mr-2"></i>Qidirish
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apartments Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="apartment-card bg-white hover-lift">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Kvartira" class="w-full h-48 object-cover">
+                        <div class="price-badge">$85,000</div>
+                        <div class="absolute top-4 left-4 bg-success text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Sotuvda
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">A-404</h3>
+                        <p class="text-gray-600 mb-4">Premium Tower</p>
+                        <div class="grid grid-cols-3 gap-4 mb-4 text-sm">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">74.2 m²</div>
+                                <div class="text-gray-500">Maydon</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">3</div>
+                                <div class="text-gray-500">Xona</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">21</div>
+                                <div class="text-gray-500">Qavat</div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                            <i class="fas fa-info-circle mr-2"></i>Batafsil
+                        </button>
+                    </div>
+                </div>
+
+                <div class="apartment-card bg-white hover-lift">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Kvartira" class="w-full h-48 object-cover">
+                        <div class="price-badge">$65,000</div>
+                        <div class="absolute top-4 left-4 bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Yangi
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">B-218</h3>
+                        <p class="text-gray-600 mb-4">Golden Residence</p>
+                        <div class="grid grid-cols-3 gap-4 mb-4 text-sm">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">58.4 m²</div>
+                                <div class="text-gray-500">Maydon</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">2</div>
+                                <div class="text-gray-500">Xona</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">15</div>
+                                <div class="text-gray-500">Qavat</div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                            <i class="fas fa-info-circle mr-2"></i>Batafsil
+                        </button>
+                    </div>
+                </div>
+
+                <div class="apartment-card bg-white hover-lift">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Kvartira" class="w-full h-48 object-cover">
+                        <div class="price-badge">$120,000</div>
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">C-105</h3>
+                        <p class="text-gray-600 mb-4">Royal Gardens</p>
+                        <div class="grid grid-cols-3 gap-4 mb-4 text-sm">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">95.2 m²</div>
+                                <div class="text-gray-500">Maydon</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">4</div>
+                                <div class="text-gray-500">Xona</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">8</div>
+                                <div class="text-gray-500">Qavat</div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                            <i class="fas fa-info-circle mr-2"></i>Batafsil
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-blue-900 transition duration-300">
+                    <i class="fas fa-plus mr-2"></i>Ko'proq ko'rish
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-accent">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Mutaxassis Maslahati Oling</h2>
+                <p class="text-xl text-gray-200 mb-8">Formani to'ldiring va biz tezda siz bilan bog'lanamiz</p>
+                
+                <form class="grid md:grid-cols-3 gap-4">
+                    <input type="text" placeholder="Ismingiz" 
+                           class="px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white">
+                    <input type="tel" placeholder="Telefon raqam" 
+                           class="px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white">
+                    <button type="submit" 
+                            class="bg-gold text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition duration-300">
+                        <i class="fas fa-paper-plane mr-2"></i>Yuborish
+                    </button>
+                </form>
+                
+                <p class="text-sm text-gray-300 mt-4">
+                    Tugmani bosish orqali siz shaxsiy ma'lumotlaringizni qayta ishlashga rozilik bildirasiz
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4">Bizning Loyihalar</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">O'zbekistondagi eng yirik turar joy majmualari</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Premium Tower -->
+                <div class="project-card bg-white shadow-lg">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Premium Tower" class="w-full h-full object-cover">
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-eye text-3xl mb-4"></i>
+                                <p class="text-lg font-semibold">Batafsil ko'rish</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-success text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Sotuvda
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Premium Tower</h3>
+                        <p class="text-gray-600 mb-3">Premium sinf</p>
+                        <p class="text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Toshkent, Mirobod tumani
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm">
+                                <span class="text-primary font-semibold">Topshirish:</span>
+                                <span class="text-gray-600">2025 yil</span>
+                            </div>
+                            <button onclick="window.location.href='project-premium-tower.html'" aria-label="Premium Tower batafsil" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition duration-300">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Golden Residence -->
+                <div class="project-card bg-white shadow-lg">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Golden Residence" class="w-full h-full object-cover">
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-eye text-3xl mb-4"></i>
+                                <p class="text-lg font-semibold">Batafsil ko'rish</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Yangi
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Golden Residence</h3>
+                        <p class="text-gray-600 mb-3">Biznes sinf</p>
+                        <p class="text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Toshkent, Yunusobod tumani
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm">
+                                <span class="text-primary font-semibold">Topshirish:</span>
+                                <span class="text-gray-600">2026 yil</span>
+                            </div>
+                            <button onclick="window.location.href='project-golden-residence.html'" aria-label="Golden Residence batafsil" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition duration-300">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Royal Gardens -->
+                <div class="project-card bg-white shadow-lg">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Royal Gardens" class="w-full h-full object-cover">
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-eye text-3xl mb-4"></i>
+                                <p class="text-lg font-semibold">Batafsil ko'rish</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Loyiha
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Royal Gardens</h3>
+                        <p class="text-gray-600 mb-3">Premium sinf</p>
+                        <p class="text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Toshkent, Yashnobod tumani
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm">
+                                <span class="text-primary font-semibold">Topshirish:</span>
+                                <span class="text-gray-600">2027 yil</span>
+                            </div>
+                            <button onclick="window.location.href='project-royal-gardens.html'" aria-label="Royal Gardens batafsil" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition duration-300">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-accent text-white px-8 py-3 rounded-lg hover:bg-red-600 transition duration-300">
+                    Barcha loyihalarni ko'rish
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-left">
+                    <h2 class="text-4xl font-bold gradient-text mb-6">Kompaniya Haqida</h2>
+                    <div class="section-divider mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        PremiumBuild - professional jamoa bo'lib, bitta oila bo'lib qolgan, fikr va ruh birligi bilan 
+                        birlashgan noyob ko'chmas mulk obyektlarini yaratish uchun, odamlarga baxt, quvonch va qulaylik 
+                        olib kelish uchun!
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="counter-item">
+                            <div class="counter-number" data-target="21">0</div>
+                            <p class="text-gray-600">yil bozorda</p>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-number" data-target="14">0</div>
+                            <p class="text-gray-600">muvaffaqiyatli loyiha</p>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-number" data-target="6">0</div>
+                            <p class="text-gray-600">"Yil brendi" mukofoti</p>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-number" data-target="3000">0</div>
+                            <p class="text-gray-600">baxtli oila</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-slide-up">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Kompaniya haqida" class="w-full rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4">Mijozlar Fikri</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-xl text-gray-600">Bizning baxtli mijozlarimiz qanday fikrda</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Mijoz" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Alisher Uzoqov</h4>
+                            <p class="text-sm text-gray-600">Biznesmen</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "PremiumBuild bilan ishlash juda yoqdi. Professional yondashuv va sifatli xizmat. 
+                        Kvartirami vaqtida va mukammal holatda oldim."
+                    </p>
+                    <div class="flex text-gold">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Mijoz" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Dilnoza Karimova</h4>
+                            <p class="text-sm text-gray-600">Oila ayoli</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Oilam uchun eng yaxshi tanlov qildim. Kvartira juda chiroyli va barcha qulayliklarga ega. 
+                        Hamma narsaga qoniqarli."
+                    </p>
+                    <div class="flex text-gold">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Mijoz" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Bobur Rahimov</h4>
+                            <p class="text-sm text-gray-600">Muhandis</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Ajoyib loyiha! Zamonaviy texnologiyalar va chiroyli dizayn. 
+                        Hamma do'stlarimga tavsiya qilaman."
+                    </p>
+                    <div class="flex text-gold">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold gradient-text mb-4">Yangiliklar</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-xl text-gray-600">Eng so'nggi yangiliklar va aksiyalar</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="news-card bg-white shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Yangilik" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-accent font-semibold mb-2">
+                            <i class="fas fa-calendar mr-2"></i>20 Dekabr 2024
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Yangi loyiha: Premium Tower</h3>
+                        <p class="text-gray-600 mb-4">
+                            Toshkent markazida joylashgan yangi premium sinfdagi turar joy majmuasi 
+                            sotuvga chiqarildi...
+                        </p>
+                        <button class="text-primary font-semibold hover:text-accent transition duration-300">
+                            Batafsil o'qish <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card bg-white shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Yangilik" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-accent font-semibold mb-2">
+                            <i class="fas fa-calendar mr-2"></i>18 Dekabr 2024
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">6% Ipoteka dasturi</h3>
+                        <p class="text-gray-600 mb-4">
+                            InfinBANK bilan hamkorlikda yangi ipoteka dasturi ishga tushirildi. 
+                            Faqat 6% yillik foiz...
+                        </p>
+                        <button class="text-primary font-semibold hover:text-accent transition duration-300">
+                            Batafsil o'qish <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card bg-white shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                         alt="Yangilik" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-accent font-semibold mb-2">
+                            <i class="fas fa-calendar mr-2"></i>15 Dekabr 2024
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">"Yil brendi" mukofoti</h3>
+                        <p class="text-gray-600 mb-4">
+                            PremiumBuild kompaniyasi "Ko'chmas mulk" nominatsiyasida 
+                            "Yil brendi" mukofotini qo'lga kiritdi...
+                        </p>
+                        <button class="text-primary font-semibold hover:text-accent transition duration-300">
+                            Batafsil o'qish <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-accent text-white px-8 py-3 rounded-lg hover:bg-red-600 transition duration-300">
+                    Barcha yangiliklarni ko'rish
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary to-navy">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white mb-16">
+                <h2 class="text-4xl font-bold mb-4">Sotuv Ofislari</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-xl text-gray-200">Bizning ofislarimizga tashrif buyuring</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="glass-effect p-6 rounded-2xl text-white">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-building text-4xl text-gold mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Markaziy Ofis</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-3"></i>
+                            Toshkent, Oybekov ko'chasi 38a
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            +998 78 122 88 22
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-clock text-gold mr-3"></i>
+                            Du-Ju: 09:00-19:00
+                        </p>
+                    </div>
+                    <button class="w-full mt-4 bg-gold text-white py-2 rounded-lg hover:bg-yellow-600 transition duration-300">
+                        <i class="fas fa-directions mr-2"></i>Yo'nalish
+                    </button>
+                </div>
+
+                <div class="glass-effect p-6 rounded-2xl text-white">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-home text-4xl text-gold mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Premium Tower Ofisi</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-3"></i>
+                            Mirobod tumani, Premium Tower
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            +998 78 122 88 33
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-clock text-gold mr-3"></i>
+                            Du-Ju: 09:00-19:00
+                        </p>
+                    </div>
+                    <button class="w-full mt-4 bg-gold text-white py-2 rounded-lg hover:bg-yellow-600 transition duration-300">
+                        <i class="fas fa-directions mr-2"></i>Yo'nalish
+                    </button>
+                </div>
+
+                <div class="glass-effect p-6 rounded-2xl text-white">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-star text-4xl text-gold mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Golden Residence Ofisi</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-3"></i>
+                            Yunusobod tumani, Golden Plaza
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone text-gold mr-3"></i>
+                            +998 78 122 88 44
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-clock text-gold mr-3"></i>
+                            Du-Ju: 09:00-19:00
+                        </p>
+                    </div>
+                    <button class="w-full mt-4 bg-gold text-white py-2 rounded-lg hover:bg-yellow-600 transition duration-300">
+                        <i class="fas fa-directions mr-2"></i>Yo'nalish
+                    </button>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-white hover:text-gold text-3xl transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold text-3xl transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold text-3xl transition duration-300">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold text-3xl transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold text-3xl transition duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                
+                <p class="text-gray-300 mb-4">Ish vaqti:</p>
+                <p class="text-white mb-2">Sotuv ofislari: Du-Ju: 09:00 - 19:00</p>
+                <p class="text-white mb-8">Yakshanba: 10:00 - 19:00</p>
+                
+                <div class="border-t border-white border-opacity-20 pt-8">
+                    <p class="text-gray-300">© 2025 PremiumBuild. Barcha huquqlar himoyalangan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('opacity-50');
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.add('opacity-50');
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto slide
+        setInterval(nextSlide, 5000);
+
+        // Navigation
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.floor(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i>Yuborilmoqda...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Yuborildi!';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        this.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            showSlide(0);
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.5 + 's';
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.hover-lift, .project-card, .news-card, .apartment-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

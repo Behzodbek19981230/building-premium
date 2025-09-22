@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Tower - Loyiha Tafsilotlari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#1a365d', accent: '#e53e3e', gold:'#d69e2e', success:'#38a169'} } } };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .gradient-text {background: linear-gradient(135deg,#1a365d,#e53e3e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-bg {background:linear-gradient(rgba(26,54,93,.7),rgba(229,62,62,.5)),url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;}
+    .section-divider {height:4px;background:linear-gradient(90deg,#1a365d,#e53e3e,#d69e2e);width:80px;margin:0;}
+    .info-badge {background:linear-gradient(135deg,#1a365d,#e53e3e);}
+    .plan-card:hover {box-shadow:0 15px 35px rgba(0,0,0,.12);transform:translateY(-6px);} 
+    .plan-card {transition:all .35s cubic-bezier(.4,0,.2,1);}  
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Top Bar -->
+  <div class="w-full bg-primary text-white text-sm py-2">
+    <div class="container mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-4">
+        <span class="flex items-center"><i class="fas fa-phone mr-2"></i>+998 78 122 88 22</span>
+        <span class="hidden md:inline-flex items-center"><i class="fas fa-clock mr-2"></i>Du-Ju: 09:00 - 19:00</span>
+      </div>
+      <div class="flex items-center space-x-3 text-lg">
+        <a href="premiumbuild.html#projects" class="hover:text-gold transition"><i class="fas fa-arrow-left mr-1"></i>Orqaga</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero-bg text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/50"></div>
+    <div class="container mx-auto px-4 py-28 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Premium Tower</h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-6">Toshkent shahrining markazida joylashgan premium turar joy majmuasi. Zamonaviy arxitektura, qulay infratuzilma va yuqori sifatli qurilish materiallari uyg'unligi.</p>
+        <div class="flex flex-wrap items-center gap-4">
+          <span class="px-5 py-2 rounded-full bg-white text-primary font-semibold shadow">Premium sinf</span>
+          <span class="px-5 py-2 rounded-full bg-accent text-white font-semibold shadow">Sotuvda</span>
+          <span class="px-5 py-2 rounded-full bg-gold text-white font-semibold shadow">2025 (Topshirish)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Info -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 bg-gray-50 rounded-xl border flex items-start space-x-4">
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-primary text-white text-xl"><i class="fas fa-vector-square"></i></div>
+        <div>
+          <h4 class="font-semibold mb-1">Maydon</h4>
+            <p class="text-gray-600 text-sm">50 m² dan 220 m² gacha</p>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-xl border flex items-start space-x-4">
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-accent text-white text-xl"><i class="fas fa-layer-group"></i></div>
+        <div>
+          <h4 class="font-semibold mb-1">Qavatlar</h4>
+          <p class="text-gray-600 text-sm">42 qavatli ikkita blok</p>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-xl border flex items-start space-x-4">
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-success text-white text-xl"><i class="fas fa-car"></i></div>
+        <div>
+          <h4 class="font-semibold mb-1">Avtoturargoh</h4>
+          <p class="text-gray-600 text-sm">Yerosti 3 qavat / 450 o'rin</p>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-50 rounded-xl border flex items-start space-x-4">
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-gold text-white text-xl"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <h4 class="font-semibold mb-1">Xavfsizlik</h4>
+          <p class="text-gray-600 text-sm">24/7 qo'riqlash va kamera tizimi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description & Gallery -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="text-3xl font-bold gradient-text mb-4">Loyiha Tavsifi</h2>
+        <div class="section-divider mb-6"></div>
+        <p class="text-gray-600 leading-relaxed mb-6">Premium Tower loyihasi Toshkent shahrining biznes va madaniy markazida joylashgan bo'lib, yangi avlod turar joy standartlarini belgilaydi. Loyihada energiya tejamkor texnologiyalar, shovqinga qarshi oynalar, zamonaviy muhandislik tizimlari va smart home integratsiyalari qo'llanilgan.</p>
+        <ul class="space-y-3 mb-8 text-gray-700">
+          <li class="flex"><i class="fas fa-check text-success mt-1 mr-3"></i><span>Smart Home tizimi bilan jihozlangan kvartiralar</span></li>
+          <li class="flex"><i class="fas fa-check text-success mt-1 mr-3"></i><span>Yaşil landshaft dizayni bilan ichki hovli</span></li>
+          <li class="flex"><i class="fas fa-check text-success mt-1 mr-3"></i><span>Premium lobby va resepshen zonalari</span></li>
+          <li class="flex"><i class="fas fa-check text-success mt-1 mr-3"></i><span>Bolalar maydonchasi va dam olish hududlari</span></li>
+          <li class="flex"><i class="fas fa-check text-success mt-1 mr-3"></i><span>Fitness zal va wellness markazi</span></li>
+        </ul>
+        <div class="flex flex-wrap gap-4">
+          <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition"><i class="fas fa-phone mr-2"></i>Konsultatsiya</button>
+          <button class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-red-600 transition"><i class="fas fa-file-download mr-2"></i>PDF Broshyura</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80" class="rounded-lg h-56 w-full object-cover shadow" alt="Gallery 1">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" class="rounded-lg h-56 w-full object-cover shadow" alt="Gallery 2">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" class="rounded-lg h-56 w-full object-cover shadow" alt="Gallery 3">
+        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=600&q=80" class="rounded-lg h-56 w-full object-cover shadow" alt="Gallery 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Floor Plans -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-3xl font-bold gradient-text mb-4">Kvartira Rejalari</h2>
+          <div class="section-divider mb-6"></div>
+          <p class="text-gray-600 max-w-xl">Turli ehtiyoj va didlar uchun optimallashtirilgan reja variantlari. Har bir reja ergonomika va funksionallikni hisobga olgan holda yaratilgan.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button class="px-4 py-2 rounded-full border border-primary text-primary font-medium bg-primary/10">1 xona</button>
+          <button class="px-4 py-2 rounded-full border hover:border-primary hover:text-primary transition">2 xona</button>
+          <button class="px-4 py-2 rounded-full border hover:border-primary hover:text-primary transition">3 xona</button>
+          <button class="px-4 py-2 rounded-full border hover:border-primary hover:text-primary transition">4+ xona</button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="plan-card bg-gray-50 rounded-xl p-5 border">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-lg font-semibold text-primary">Plan A1</h3>
+            <span class="px-3 py-1 rounded-full bg-success text-white text-xs font-semibold">Mashhur</span>
+          </div>
+          <div class="h-40 bg-white rounded-lg border flex items-center justify-center text-gray-400 text-sm mb-4">Reja rasmini joylang</div>
+          <div class="grid grid-cols-3 text-sm mb-4 gap-3">
+            <div>
+              <div class="font-semibold text-gray-700">56.4 m²</div>
+              <div class="text-gray-500">Maydon</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">2</div>
+              <div class="text-gray-500">Xona</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">8-14</div>
+              <div class="text-gray-500">Qavat</div>
+            </div>
+          </div>
+          <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition text-sm font-medium">
+            Batafsil
+          </button>
+        </div>
+
+        <div class="plan-card bg-gray-50 rounded-xl p-5 border">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-lg font-semibold text-primary">Plan B2</h3>
+            <span class="px-3 py-1 rounded-full bg-gold text-white text-xs font-semibold">Yangi</span>
+          </div>
+          <div class="h-40 bg-white rounded-lg border flex items-center justify-center text-gray-400 text-sm mb-4">Reja rasmini joylang</div>
+          <div class="grid grid-cols-3 text-sm mb-4 gap-3">
+            <div>
+              <div class="font-semibold text-gray-700">74.2 m²</div>
+              <div class="text-gray-500">Maydon</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">3</div>
+              <div class="text-gray-500">Xona</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">12-25</div>
+              <div class="text-gray-500">Qavat</div>
+            </div>
+          </div>
+          <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition text-sm font-medium">
+            Batafsil
+          </button>
+        </div>
+
+        <div class="plan-card bg-gray-50 rounded-xl p-5 border">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-lg font-semibold text-primary">Plan C3</h3>
+            <span class="px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">Premium</span>
+          </div>
+          <div class="h-40 bg-white rounded-lg border flex items-center justify-center text-gray-400 text-sm mb-4">Reja rasmini joylang</div>
+          <div class="grid grid-cols-3 text-sm mb-4 gap-3">
+            <div>
+              <div class="font-semibold text-gray-700">118.6 m²</div>
+              <div class="text-gray-500">Maydon</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">4</div>
+              <div class="text-gray-500">Xona</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">20-38</div>
+              <div class="text-gray-500">Qavat</div>
+            </div>
+          </div>
+          <button class="w-full bg-accent text-white py-2 rounded-lg hover:bg-red-600 transition text-sm font-medium">
+            Batafsil
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold gradient-text mb-4">Afzalliklar</h2>
+      <div class="section-divider mb-10"></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-primary text-white flex items-center justify-center mb-4"><i class="fas fa-seedling"></i></div>
+          <h4 class="font-semibold mb-2">Eko Hudud</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Yashil hududlar, daraxtzorlar va dam olish zonalari bilan ekologik muhit.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-accent text-white flex items-center justify-center mb-4"><i class="fas fa-wifi"></i></div>
+          <h4 class="font-semibold mb-2">Smart Tizimlar</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Barcha kvartiralarda zamonaviy aqlli boshqaruv tizimlari.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-success text-white flex items-center justify-center mb-4"><i class="fas fa-shield-halved"></i></div>
+          <h4 class="font-semibold mb-2">Xavfsizlik</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">24/7 monitoring, xususiy qo'riqlash va kirishni nazorat qilish tizimi.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-gold text-white flex items-center justify-center mb-4"><i class="fas fa-store"></i></div>
+          <h4 class="font-semibold mb-2">Savdo Zonasi</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Do'konlar, kafe va xizmatlar bir makonda jamlangan qulay infratuzilma.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-purple-600 text-white flex items-center justify-center mb-4"><i class="fas fa-dumbbell"></i></div>
+          <h4 class="font-semibold mb-2">Fitness & Wellness</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Sport zallari va sog'lomlashtirish markazlari bilan sog'lom turmush tarzi.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-lg bg-pink-500 text-white flex items-center justify-center mb-4"><i class="fas fa-children"></i></div>
+          <h4 class="font-semibold mb-2">Bolalar Maydonchasi</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Bolalar uchun xavfsiz va qiziqarli o'yin hamda rivojlantiruvchi hudud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-accent text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Loyihaga Qiziqyapsizmi?</h2>
+      <p class="text-lg text-gray-200 mb-8">Kontakt ma'lumotlaringizni qoldiring va siz bilan tez orada bog'lanamiz</p>
+      <form class="max-w-3xl mx-auto grid md:grid-cols-4 gap-4">
+        <input type="text" placeholder="Ism" class="px-4 py-3 rounded-lg text-gray-800" required>
+        <input type="tel" placeholder="Telefon" class="px-4 py-3 rounded-lg text-gray-800" required>
+        <select class="px-4 py-3 rounded-lg text-gray-800" required>
+          <option>Reja turi</option>
+          <option>1 xonali</option>
+          <option>2 xonali</option>
+          <option>3 xonali</option>
+          <option>4+ xonali</option>
+        </select>
+        <button type="submit" class="bg-gold hover:bg-yellow-600 text-white font-semibold rounded-lg px-6 py-3 transition"><i class="fas fa-paper-plane mr-2"></i>Yuborish</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-400 py-10 text-sm">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-6 items-center">
+      <p>© 2025 PremiumBuild. Premium Tower loyihasi.</p>
+      <div class="flex space-x-4 text-lg">
+        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-telegram"></i></a>
+        <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda';
+      btn.disabled = true;
+      setTimeout(()=>{
+        btn.innerHTML = '<i class="fas fa-check mr-2"></i>Yuborildi';
+        setTimeout(()=>{ btn.innerHTML = original; btn.disabled = false; this.reset(); },2000);
+      },1500);
+    });
+  </script>
+</body>
+</html>
